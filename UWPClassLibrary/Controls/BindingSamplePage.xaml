@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="UWPClassLibrary.Controls.BindingSamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:UWPClassLibrary.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Margin="8" Background="PaleVioletRed">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBox Header="Inside User Control" Text="{x:Bind ViewModel.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock Grid.Row="1" Text="{x:Bind ViewModel.Text, Mode=OneWay}" />
+        <Button
+            Grid.Row="2"
+            Command="{x:Bind ViewModel.MyCommand}"
+            Content="Click me" />
+    </Grid>
+</Page>

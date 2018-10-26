@@ -1,0 +1,24 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IslandPath Condition="$(IslandPath) == ''">..\$(IslandLibrary)</IslandPath>
+	  <IslandDirectoryName>$([System.IO.Path]::GetFileName($(IslandPath.TrimEnd('\'))))</IslandDirectoryName>
+  </PropertyGroup>
+  <ItemGroup>
+    <IslandLibraryCompile Include="$(IslandPath)\**\*.xaml.cs;$(IslandPath)\obj\$(Configuration)\**\*.g.cs;$(IslandPath)\obj\$(Configuration)\**\*.g.i.cs"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="@(IslandLibraryCompile)">
+      <LinkBase>$(IslandDirectoryName)\%(RecursiveDir)</LinkBase>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+	<IslandLibraryContent Include="$(IslandPath)\**\*.*" Exclude="$(IslandPath)\**\*.user;$(IslandPath)\**\*.csproj;$(IslandPath)\**\*.cs;$(IslandPath)\**\*.xaml;$(IslandPath)\**\obj\**;$(IslandPath)\**\bin\**"/>
+	<IslandLibraryContent Include="$(IslandPath)\obj\$(Configuration)\**\*.xbf"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="@(IslandLibraryContent)">
+      <Link>$(IslandDirectoryName)\%(RecursiveDir)\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
