@@ -156,8 +156,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="[5.0.0-build.168,)" />
-    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="[5.0.0-build.168,)" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.Controls" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Wpf.UI.XamlHost" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelsClassLibrary\ModelsClassLibrary.csproj">
