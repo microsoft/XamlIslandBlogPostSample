@@ -11,13 +11,15 @@
     <Grid Margin="8" Background="PaleVioletRed">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <TextBox Header="Inside User Control" Text="{x:Bind ViewModel.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <TextBlock Grid.Row="1" Text="{x:Bind ViewModel.Text, Mode=OneWay}" />
+        <ListView Grid.Row="2" ItemsSource="{x:Bind ViewModel.MySampleList, Mode=OneWay}"/>
         <Button
-            Grid.Row="2"
+            Grid.Row="3"
             Command="{x:Bind ViewModel.MyCommand}"
             Content="Click me" />
     </Grid>

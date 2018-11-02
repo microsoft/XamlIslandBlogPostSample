@@ -9,6 +9,7 @@ namespace ModelsClassLibrary
     public class MySampleViewModel : INotifyPropertyChanged
     {
         private string _text;
+        private ObservableCollection<string> _mySampleList;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,18 +31,28 @@ namespace ModelsClassLibrary
             }
         }
 
-        public ObservableCollection<string> MySampleList { get; } = new ObservableCollection<string>();
+        public ObservableCollection<string> MySampleList
+        {
+            get => _mySampleList;
+            private set
+            {
+                _mySampleList = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ICommand MyCommand { get; }
 
         public MySampleViewModel()
         {
             MyCommand = new RelayCommand(ExecuteMyCommand);
+            MySampleList = new ObservableCollection<string>();
         }
 
         private void ExecuteMyCommand()
         {
             Text = "Button Clicked!";
+            MySampleList.Add(DateTime.Now.ToString());
         }
     }
 }
