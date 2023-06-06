@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="UWPClassLibrary.MyUserControl1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,7 +14,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <TextBlock Text="Hi from UWP!" />
-        <Image Source="img.png" />
+
+        <TextBlock Text="Hi from UWP!" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Image Source="ms-appx:///Assets/img.png" Grid.Row="1" Stretch="Uniform" />
     </Grid>
 </UserControl>
