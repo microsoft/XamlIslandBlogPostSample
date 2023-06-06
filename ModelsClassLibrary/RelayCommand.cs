@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Input;
 
 namespace ModelsClassLibrary
@@ -10,11 +10,6 @@ namespace ModelsClassLibrary
 
         public event EventHandler CanExecuteChanged;
 
-        public void RaiseCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
-        }
-
         public RelayCommand(Action execute, Func<bool> canExecute = null)
         {
             _execute = execute;
@@ -23,12 +18,17 @@ namespace ModelsClassLibrary
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute != null ? _canExecute.Invoke() : true;
+            return _canExecute?.Invoke() ?? true;
         }
 
         public void Execute(object parameter)
         {
-            _execute.Invoke();
+            _execute?.Invoke();
+        }
+
+        public void RaiseCanExecuteChanged()
+        {
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
